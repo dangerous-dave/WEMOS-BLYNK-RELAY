@@ -1,7 +1,10 @@
+
  #define BLYNK_PRINT Serial  // Comment this out to disable prints and save space  
  #define RELAY_PIN D1  
+ #define BLYNK_DEBUG        // Optional, this enables more detailed prints
  #include <ESP8266WiFi.h>  
- #include <BlynkSimpleEsp8266_SSL.h>  
+ #include <BlynkSimpleEsp8266.h>  
+ #include <SimpleTimer.h>      // Essential for almost all sketches
  #include <Ticker.h>  
  // You should get Auth Token in the Blynk App.  
  // Go to the Project Settings (nut icon).  
@@ -11,9 +14,6 @@
  char ssid[] = "SSID";  
  char pass[] = "PASS";  
  bool vPinState = false;        // Set the default virtual pin state  
- int maxRelayOnTime = 10;       // Set the max on time of the relay   
- int minRelayOnTime = 1;        // Set the minimum on time of the relay  
- int vDelayTime = minRelayOnTime;   // Set the initial delay time value  
  Ticker doorLatch;           // Callback fuction instance  
  void setPinLow()  
  {  
@@ -39,15 +39,6 @@
   if(vPinState)  
   {  
    // Open the relay  
-   digitalWrite(RELAY_PIN, 1);  
-   // Turn off the relay after the defined delay time  
-   doorLatch.attach(vDelayTime, setPinLow);  
+   digitalWrite(RELAY_PIN, 1);   
   }  
- }  
- BLYNK_WRITE(V1)  
- {  
-  // Get the input from the virtual input slider  
-  vDelayTime = param.asInt();  
-  // Constrain the virtual slider input to within the preset bounds  
-  vDelayTime = constrain(vDelayTime, minRelayOnTime, maxRelayOnTime);  
  }  
