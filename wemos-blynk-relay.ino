@@ -8,7 +8,7 @@
  char auth[] = "AUTH";  
  // Your WiFi credentials.  
  // Set password to "" for open networks.  
- char ssid[] = "WIFI";  
+ char ssid[] = "SSID";  
  char pass[] = "PASS";  
  bool vPinState = false;        // Set the default virtual pin state  
  int maxRelayOnTime = 10;       // Set the max on time of the relay   
