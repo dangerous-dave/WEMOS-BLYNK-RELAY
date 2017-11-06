@@ -8,11 +8,11 @@
  #include <Ticker.h>  
  // You should get Auth Token in the Blynk App.  
  // Go to the Project Settings (nut icon).  
- char auth[] = "auth";  
+ char auth[] = "AUTH";  
  // Your WiFi credentials.  
  // Set password to "" for open networks.  
- char ssid[] = "wifi";  
- char pass[] = "pass";  
+ char ssid[] = "WIFI";  
+ char pass[] = "PASS";  
  bool vPinState = false;        // Set the default virtual pin state  
  Ticker doorLatch;           // Callback fuction instance  
  void setPinLow()  
